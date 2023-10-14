@@ -11,6 +11,7 @@ def get_birthdays_per_week(users) :
         birthday_this_year = birthday.replace(year=today.year)
         if birthday_this_year < today :
             birthday_this_year = birthday.replace(year=today.year + 1)
+        
         delta_days = (birthday_this_year - today).days
         if delta_days < 7 :
             if birthday_this_year.strftime('%A') == 'Saturday' or birthday_this_year.strftime('%A') == 'Sunday' :
