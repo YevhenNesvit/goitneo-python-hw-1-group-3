@@ -3,7 +3,7 @@ from collections import defaultdict
 
 def get_birthdays_per_week(users) :
     birthdays_per_week = defaultdict(list, { k:[] for k in ('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday') })
-    today = datetime.today().date()
+    today = datetime(2023, 10, 20).date()
 
     for user in users :
         name = user["name"]
@@ -15,7 +15,10 @@ def get_birthdays_per_week(users) :
         delta_days = (birthday_this_year - today).days
         if delta_days < 7 :
             if birthday_this_year.strftime('%A') in ('Saturday', 'Sunday') :
-                birthdays_per_week['Monday'].append(name)
+                if delta_days > 5 :
+                    continue
+                else :
+                    birthdays_per_week['Monday'].append(name)
             else :
                 birthdays_per_week[birthday_this_year.strftime('%A')].append(name)
     
