@@ -2,8 +2,9 @@ from datetime import datetime, date
 from collections import defaultdict
 
 def get_birthdays_per_week(users) :
-    birthdays_per_week = defaultdict(list, { k:[] for k in ('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday') })
-    today = datetime(2023, 10, 20).date()
+    birthdays_per_week = defaultdict(list)
+    today = datetime.today().date()
+    users.sort(key=lambda x: x['birthday'])
 
     for user in users :
         name = user["name"]
