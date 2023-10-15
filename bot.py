@@ -14,6 +14,18 @@ def add_contact(args, contacts):
     else :
         contacts[name] = phone
         return "Contact added."
+    
+def change_contact(args, contacts):
+    if len(args) != 2 :
+        return "Please enter name and phone number!"
+    else :
+        name, phone = args
+    
+    if name not in contacts.keys() :
+        return f"Contact {name} does not exist!"
+    else :
+        contacts[name] = phone
+        return "Contact updated."
 
 def main():
     contacts = {}
@@ -29,6 +41,8 @@ def main():
             print("How can I help you?")
         elif command == "add":
             print(add_contact(args, contacts))
+        elif command == "change":
+            print(change_contact(args, contacts))
         else:
             print("Invalid command.")
 
