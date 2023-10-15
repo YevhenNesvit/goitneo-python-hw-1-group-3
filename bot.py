@@ -37,6 +37,16 @@ def show_phone(args, contacts) :
         return f"Contact {name} does not exist. Please try again!"
     else :
         return contacts[name]
+    
+def show_all(contacts) :
+    all = ""
+    if not contacts :
+        return "There are no contacts yet!"
+    else :
+        for k, v in contacts.items() :
+            all += f"{k} {v}\n"
+    return all.rstrip()
+
 
 def main():
     contacts = {}
@@ -56,6 +66,8 @@ def main():
             print(change_contact(args, contacts))
         elif command == "phone":
             print(show_phone(args, contacts))
+        elif command == "all":
+            print(show_all(contacts))
         else:
             print("Invalid command.")
 
